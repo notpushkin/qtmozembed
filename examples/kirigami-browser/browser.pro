@@ -1,0 +1,17 @@
+QT += qml quick
+CONFIG += c++11
+TEMPLATE = app
+TARGET = qtmozembed-kirigami-browser
+
+SOURCES += main.cpp
+RESOURCES += browser.qrc
+
+QTMOZEMBED_COMPONENTS_PATH = $$[QT_INSTALL_LIBS]/mozembedlite
+isEmpty(QTMOZEMBED_COMPONENTS_PATH) {
+    QTMOZEMBED_COMPONENTS_PATH = /usr/lib/mozembedlite
+}
+
+INCLUDEPATH += $$[QT_INSTALL_HEADERS]
+LIBS += -L$$[QT_INSTALL_LIBS] -lqt5embedwidget
+DEFINES += QTMOZEMBED_COMPONENTS_PATH=\\\"$$QTMOZEMBED_COMPONENTS_PATH\\\"
+DEFINES += QTMOZEMBED_QML_IMPORT_PATH=\\\"$$[QT_INSTALL_LIBS]/qt5/qml\\\"
