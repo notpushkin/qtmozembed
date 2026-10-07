@@ -78,10 +78,13 @@ Kirigami.ApplicationWindow {
         if (!value.length)
             return
 
-        if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(value)) {
+        if (/^(https?|ftp|file):/i.test(value)
+                || /^(about|data|mailto):/i.test(value)
+                || /^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//.test(value)) {
             webView.url = value
         } else if (!/\s/.test(value)
-                   && (value.indexOf(".") !== -1 || value === "localhost")) {
+                   && (value.indexOf(".") !== -1
+                       || /^localhost(?::\d+)?(?:\/|$)/i.test(value))) {
             webView.url = "https://" + value
         } else {
             webView.url = "https://duckduckgo.com/?q=" + encodeURIComponent(value)

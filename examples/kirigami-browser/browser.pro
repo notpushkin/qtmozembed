@@ -6,9 +6,8 @@ TARGET = qtmozembed-kirigami-browser
 SOURCES += main.cpp
 RESOURCES += browser.qrc
 
-QTMOZEMBED_COMPONENTS_PATH = $$[QT_INSTALL_LIBS]/mozembedlite
 isEmpty(QTMOZEMBED_COMPONENTS_PATH) {
-    QTMOZEMBED_COMPONENTS_PATH = /usr/lib/mozembedlite
+    QTMOZEMBED_COMPONENTS_PATH = $$[QT_INSTALL_LIBS]/mozembedlite
 }
 
 INCLUDEPATH += $$[QT_INSTALL_HEADERS]
